@@ -39,14 +39,14 @@ const fullTitle = title === siteTitle ? title : `${title} | ${siteTitle}`;
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     
-    <!-- Fonts -->
+    <!-- Fonts - Clean, readable fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
     
     <title>{fullTitle}</title>
   </head>
-  <body class="min-h-screen bg-hero-gradient text-white font-body antialiased">
+  <body class="min-h-screen bg-white text-gray-900 font-body antialiased">
     <Header lang={lang} />
     
     <main class="flex-1">
@@ -58,48 +58,54 @@ const fullTitle = title === siteTitle ? title : `${title} | ${siteTitle}`;
 </html>
 
 <style is:global>
-  /* Scrollbar styling */
+  /* Base font settings */
+  body {
+    font-family: 'Inter', 'Noto Sans JP', sans-serif;
+    line-height: 1.8;
+  }
+  
+  /* Clean scrollbar */
   ::-webkit-scrollbar {
     width: 8px;
   }
   
   ::-webkit-scrollbar-track {
-    background: rgba(255, 255, 255, 0.05);
+    background: #f1f1f1;
   }
   
   ::-webkit-scrollbar-thumb {
-    background: rgba(107, 33, 168, 0.5);
+    background: #c1c1c1;
     border-radius: 4px;
   }
   
   ::-webkit-scrollbar-thumb:hover {
-    background: rgba(107, 33, 168, 0.8);
+    background: #a1a1a1;
   }
   
   /* Selection */
   ::selection {
-    background: rgba(107, 33, 168, 0.5);
-    color: white;
+    background: rgba(59, 130, 246, 0.2);
+    color: inherit;
   }
   
-  /* Typography prose overrides */
+  /* Typography prose - clean and readable */
   .prose {
-    --tw-prose-body: theme('colors.gray.300');
-    --tw-prose-headings: theme('colors.white');
-    --tw-prose-lead: theme('colors.gray.400');
-    --tw-prose-links: theme('colors.yellow.400');
-    --tw-prose-bold: theme('colors.white');
-    --tw-prose-counters: theme('colors.gray.400');
-    --tw-prose-bullets: theme('colors.gray.600');
-    --tw-prose-hr: theme('colors.gray.700');
-    --tw-prose-quotes: theme('colors.gray.300');
-    --tw-prose-quote-borders: theme('colors.purple.600');
-    --tw-prose-captions: theme('colors.gray.400');
-    --tw-prose-code: theme('colors.marvel-gold');
-    --tw-prose-pre-code: theme('colors.gray.300');
-    --tw-prose-pre-bg: rgba(0, 0, 0, 0.3);
-    --tw-prose-th-borders: theme('colors.gray.600');
-    --tw-prose-td-borders: theme('colors.gray.700');
+    --tw-prose-body: theme('colors.gray.700');
+    --tw-prose-headings: theme('colors.gray.900');
+    --tw-prose-lead: theme('colors.gray.600');
+    --tw-prose-links: theme('colors.blue.600');
+    --tw-prose-bold: theme('colors.gray.900');
+    --tw-prose-counters: theme('colors.gray.500');
+    --tw-prose-bullets: theme('colors.gray.400');
+    --tw-prose-hr: theme('colors.gray.200');
+    --tw-prose-quotes: theme('colors.gray.700');
+    --tw-prose-quote-borders: theme('colors.blue.500');
+    --tw-prose-captions: theme('colors.gray.500');
+    --tw-prose-code: theme('colors.gray.900');
+    --tw-prose-pre-code: theme('colors.gray.800');
+    --tw-prose-pre-bg: theme('colors.gray.50');
+    --tw-prose-th-borders: theme('colors.gray.300');
+    --tw-prose-td-borders: theme('colors.gray.200');
   }
   
   .prose a {
@@ -108,23 +114,29 @@ const fullTitle = title === siteTitle ? title : `${title} | ${siteTitle}`;
   }
   
   .prose a:hover {
-    color: theme('colors.marvel-gold');
+    color: theme('colors.blue.800');
   }
   
   .prose blockquote {
     font-style: normal;
-    background: rgba(107, 33, 168, 0.1);
+    background: theme('colors.gray.50');
     border-radius: 0 0.5rem 0.5rem 0;
     padding: 1rem 1.5rem;
+    border-left-color: theme('colors.blue.500');
   }
   
   .prose table {
-    background: rgba(255, 255, 255, 0.02);
+    background: white;
     border-radius: 0.5rem;
     overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
   }
   
   .prose th {
-    background: rgba(107, 33, 168, 0.2);
+    background: theme('colors.gray.50');
+  }
+  
+  .prose pre {
+    border: 1px solid theme('colors.gray.200');
   }
 </style>

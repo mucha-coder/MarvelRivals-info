@@ -14,33 +14,27 @@ const navItems = [
   { href: lang === 'ja' ? '/' : '/en', label: t('nav.home') },
   { href: lang === 'ja' ? '/category/patch-notes' : '/en/category/patch-notes', label: t('nav.patchNotes') },
   { href: lang === 'ja' ? '/category/hero-balance' : '/en/category/hero-balance', label: t('nav.heroBalance') },
-  { href: lang === 'ja' ? '/category/events' : '/en/category/events', label: t('nav.events') },
 ];
 ---
 
-<header class="sticky top-0 z-50 border-b border-white/10 bg-marvel-dark/95 backdrop-blur-md">
-  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-    <div class="flex h-16 items-center justify-between">
+<header class="sticky top-0 z-50 border-b border-gray-200 bg-white/95 backdrop-blur-sm">
+  <div class="mx-auto max-w-4xl px-4 sm:px-6">
+    <div class="flex h-14 items-center justify-between">
       <!-- Logo -->
-      <a href={lang === 'ja' ? '/' : '/en'} class="flex items-center gap-3 group">
-        <div class="flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br from-marvel-red to-marvel-purple shadow-lg shadow-marvel-red/20 transition-transform group-hover:scale-110">
-          <span class="text-xl font-bold text-white">M</span>
-        </div>
-        <span class="hidden sm:block text-xl font-display font-bold text-white">
-          Marvel Rivals <span class="text-marvel-gold">Info</span>
-        </span>
+      <a href={lang === 'ja' ? '/' : '/en'} class="flex items-center gap-2 font-bold text-gray-900 hover:text-blue-600 transition-colors">
+        <span class="text-lg">Marvel Rivals Info</span>
       </a>
 
       <!-- Navigation -->
-      <nav class="hidden md:flex items-center gap-1">
+      <nav class="hidden sm:flex items-center gap-6">
         {navItems.map((item) => (
           <a
             href={item.href}
             class:list={[
-              'px-4 py-2 rounded-lg text-sm font-medium transition-all',
+              'text-sm font-medium transition-colors',
               pathname === item.href || (item.href !== '/' && item.href !== '/en' && pathname.startsWith(item.href))
-                ? 'bg-marvel-purple/30 text-white'
-                : 'text-gray-300 hover:text-white hover:bg-white/5',
+                ? 'text-blue-600'
+                : 'text-gray-600 hover:text-gray-900',
             ]}
           >
             {item.label}
@@ -54,16 +48,16 @@ const navItems = [
   </div>
 
   <!-- Mobile Navigation -->
-  <nav class="md:hidden border-t border-white/5 px-4 py-2">
-    <div class="flex flex-wrap gap-2">
+  <nav class="sm:hidden border-t border-gray-100 px-4 py-2">
+    <div class="flex flex-wrap gap-4">
       {navItems.map((item) => (
         <a
           href={item.href}
           class:list={[
-            'px-3 py-1.5 rounded-lg text-xs font-medium transition-all',
+            'text-sm font-medium transition-colors',
             pathname === item.href
-              ? 'bg-marvel-purple/30 text-white'
-              : 'text-gray-400 hover:text-white hover:bg-white/5',
+              ? 'text-blue-600'
+              : 'text-gray-500 hover:text-gray-900',
           ]}
         >
           {item.label}

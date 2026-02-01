@@ -32,6 +32,10 @@ const dateFormatter = new Intl.DateTimeFormat('ja-JP', {
   month: 'long',
   day: 'numeric',
 });
+
+// カテゴリ名
+const categoryKey = `category.${post.data.category}` as keyof ReturnType<typeof useTranslations>;
+const categoryLabel = t(categoryKey);
 ---
 
 <BaseLayout 
@@ -40,101 +44,69 @@ const dateFormatter = new Intl.DateTimeFormat('ja-JP', {
   lang="ja"
   heroImage={post.data.heroImage}
 >
-  <article class="py-12">
-    <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-      <!-- Article Header -->
-      <header class="mb-12">
-        {post.data.heroImage && (
-          <div class="aspect-video overflow-hidden rounded-2xl mb-8">
-            <img
-              src={post.data.heroImage}
-              alt=""
-              class="h-full w-full object-cover"
-            />
-          </div>
-        )}
-        
-        <!-- Category Badge -->
-        <div class="mb-4">
-          <a 
-            href={`/category/${post.data.category}`}
-            class="inline-flex items-center rounded-full bg-marvel-purple/20 px-4 py-1.5 text-sm font-medium text-marvel-gold hover:bg-marvel-purple/30 transition-colors"
-          >
-            {t(`category.${post.data.category}` as any)}
-          </a>
-        </div>
-        
-        <!-- Title -->
-        <h1 class="text-4xl sm:text-5xl font-display font-bold text-white mb-6 leading-tight">
-          {post.data.title}
-        </h1>
-        
-        <!-- Meta -->
-        <div class="flex flex-wrap items-center gap-4 text-gray-400">
-          <div class="flex items-center gap-2">
-            <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-            </svg>
-            <time datetime={post.data.pubDate.toISOString()}>
-              {dateFormatter.format(post.data.pubDate)}
-            </time>
-          </div>
-          
-          {post.data.updatedDate && (
-            <div class="flex items-center gap-2 text-marvel-gold">
-              <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
-              </svg>
-              <span>{t('post.updatedAt')}: {dateFormatter.format(post.data.updatedDate)}</span>
-            </div>
-          )}
-        </div>
-        
-        <!-- Related Heroes -->
-        {post.data.heroes && post.data.heroes.length > 0 && (
-          <div class="mt-6 flex flex-wrap gap-2">
-            {post.data.heroes.map((hero) => (
-              <span class="inline-flex items-center gap-1 rounded-lg bg-white/5 border border-white/10 px-3 py-1.5 text-sm text-gray-300">
-                ⚔️ {hero}
-              </span>
-            ))}
-          </div>
-        )}
-        
-        <!-- English Version Link -->
-        {hasEnglishVersion && (
-          <div class="mt-6 p-4 rounded-xl bg-marvel-blue/10 border border-marvel-blue/30">
-            <a
-              href={`/en/${enSlug}`}
-              class="inline-flex items-center gap-2 text-marvel-gold hover:text-yellow-300 transition-colors"
-            >
-              <span class="text-xl">🇺🇸</span>
-              <span class="font-medium">{t('post.readInEnglish')}</span>
-              <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-              </svg>
-            </a>
-          </div>
-        )}
-      </header>
+  <article class="mx-auto max-w-3xl px-4 sm:px-6 py-8">
+    <!-- Breadcrumb -->
+    <nav class="mb-6 text-sm text-gray-500">
+      <a href="/" class="hover:text-blue-600">ホーム</a>
+      <span class="mx-2">›</span>
+      <span>{categoryLabel}</span>
+    </nav>
+
+    <!-- Article Header -->
+    <header class="mb-8 pb-6 border-b border-gray-200">
+      <h1 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-4 leading-tight">
+        {post.data.title}
+      </h1>
       
-      <!-- Article Content -->
-      <div class="prose prose-lg prose-invert max-w-none">
-        <Content />
+      <div class="flex flex-wrap items-center gap-4 text-sm text-gray-500">
+        <time datetime={post.data.pubDate.toISOString()}>
+          {dateFormatter.format(post.data.pubDate)}
+        </time>
+        
+        {post.data.updatedDate && (
+          <span class="text-blue-600">
+            （更新: {dateFormatter.format(post.data.updatedDate)}）
+          </span>
+        )}
       </div>
       
-      <!-- Back to Home -->
-      <footer class="mt-16 pt-8 border-t border-white/10">
-        <a
-          href="/"
-          class="inline-flex items-center gap-2 text-gray-400 hover:text-white transition-colors"
-        >
-          <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-          </svg>
-          <span>{t('nav.home')}に戻る</span>
-        </a>
-      </footer>
+      <!-- Related Heroes -->
+      {post.data.heroes && post.data.heroes.length > 0 && (
+        <div class="mt-4 flex flex-wrap gap-2">
+          {post.data.heroes.map((hero) => (
+            <span class="inline-flex items-center px-2 py-1 rounded text-sm bg-gray-100 text-gray-700">
+              {hero}
+            </span>
+          ))}
+        </div>
+      )}
+      
+      <!-- English Version Link -->
+      {hasEnglishVersion && (
+        <div class="mt-4">
+          <a
+            href={`/en/${enSlug}`}
+            class="text-sm text-blue-600 hover:underline"
+          >
+            → Read in English
+          </a>
+        </div>
+      )}
+    </header>
+    
+    <!-- Article Content -->
+    <div class="prose prose-gray max-w-none">
+      <Content />
     </div>
+    
+    <!-- Back to Home -->
+    <footer class="mt-12 pt-6 border-t border-gray-200">
+      <a
+        href="/"
+        class="text-sm text-gray-500 hover:text-blue-600"
+      >
+        ← 記事一覧に戻る
+      </a>
+    </footer>
   </article>
 </BaseLayout>

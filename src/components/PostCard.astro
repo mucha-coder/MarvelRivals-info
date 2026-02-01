@@ -26,50 +26,41 @@ const dateFormatter = new Intl.DateTimeFormat(lang === 'ja' ? 'ja-JP' : 'en-US',
 });
 ---
 
-<article class="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-white/5 to-transparent border border-white/10 transition-all hover:border-marvel-purple/50 hover:shadow-xl hover:shadow-marvel-purple/10">
-  <!-- Hero Image -->
-  {post.data.heroImage && (
-    <div class="aspect-video overflow-hidden">
-      <img
-        src={post.data.heroImage}
-        alt=""
-        class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-      />
-    </div>
-  )}
-  
-  <!-- Content -->
-  <div class="p-6">
-    <!-- Category Badge -->
-    <div class="mb-3">
-      <span class="inline-flex items-center rounded-full bg-marvel-purple/20 px-3 py-1 text-xs font-medium text-marvel-gold">
-        {categoryLabel}
-      </span>
-    </div>
+<article class="py-4 border-b border-gray-100 last:border-b-0">
+  <div class="flex items-start justify-between gap-4">
+    <div class="flex-1 min-w-0">
+      <!-- Category & Date -->
+      <div class="flex items-center gap-3 text-sm text-gray-500 mb-1">
+        <span class="text-blue-600 font-medium">{categoryLabel}</span>
+        <span>•</span>
+        <time datetime={post.data.pubDate.toISOString()}>
+          {dateFormatter.format(post.data.pubDate)}
+        </time>
+      </div>
 
-    <!-- Title -->
-    <h3 class="mb-2 text-xl font-bold text-white group-hover:text-marvel-gold transition-colors">
-      <a href={href} class="after:absolute after:inset-0">
-        {post.data.title}
-      </a>
-    </h3>
+      <!-- Title -->
+      <h3 class="text-lg font-medium text-gray-900 hover:text-blue-600 transition-colors">
+        <a href={href} class="hover:underline">
+          {post.data.title}
+        </a>
+      </h3>
 
-    <!-- Description -->
-    <p class="mb-4 text-sm text-gray-400 line-clamp-2">
-      {post.data.description}
-    </p>
+      <!-- Description -->
+      <p class="mt-1 text-sm text-gray-600 line-clamp-2">
+        {post.data.description}
+      </p>
 
-    <!-- Meta -->
-    <div class="flex items-center justify-between text-xs text-gray-500">
-      <time datetime={post.data.pubDate.toISOString()}>
-        {dateFormatter.format(post.data.pubDate)}
-      </time>
-      
+      <!-- Related Heroes -->
       {post.data.heroes && post.data.heroes.length > 0 && (
-        <div class="flex items-center gap-1">
-          <span class="text-marvel-gold">⚔️</span>
-          <span>{post.data.heroes.slice(0, 2).join(', ')}</span>
-          {post.data.heroes.length > 2 && <span>+{post.data.heroes.length - 2}</span>}
+        <div class="mt-2 flex flex-wrap gap-1">
+          {post.data.heroes.slice(0, 3).map((hero) => (
+            <span class="inline-flex items-center px-2 py-0.5 rounded text-xs bg-gray-100 text-gray-600">
+              {hero}
+            </span>
+          ))}
+          {post.data.heroes.length > 3 && (
+            <span class="text-xs text-gray-400">+{post.data.heroes.length - 3}</span>
+          )}
         </div>
       )}
     </div>
