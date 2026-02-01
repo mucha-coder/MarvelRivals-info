@@ -1,0 +1,59 @@
+---
+title: "Angela「エース・オブ・スペード」& Emma Frost「クイーン・オブ・ダイヤモンド」スキン登場"
+description: "Marvel Rivalsに新しいカジノテーマスキンが登場！AngelaのAce of SpadesスキンとEmma FrostのQueen of Diamondsスキンの詳細をお届けします。"
+pubDate: 2026-01-27
+heroImage: "/images/angela-emma-skins.png"
+category: "events"
+heroes: ["Angela", "Emma Frost"]
+lang: "ja"
+---
+
+## 新スキン「Ace of Spades」&「Queen of Diamonds」が登場！
+
+Marvel Rivalsに、AngelaとEmma Frostのカジノをテーマにした華麗な新スキンが登場しました。カードゲームをモチーフにしたエレガントなデザインで、バトルフィールドを彩ります。
+
+## 入手開始日
+
+**2026年1月30日 11:00 JST（2:00 UTC）より入手可能**
+
+---
+
+## Angela - Ace of Spades（エース・オブ・スペード）
+
+![Angela & Emma Frost Skins](/images/angela-emma-skins.png)
+
+天使の戦士Angelaが、スペードのエースをテーマにしたダークでエレガントなスタイルに変身！
+
+### スキンの特徴
+- **ダークカラーのアーマー**: 黒とゴールドを基調としたデザイン
+- **スペードのモチーフ**: 武器や衣装にスペードのシンボル
+- **カジノ風のアクセサリー**: カードをイメージした装飾
+
+---
+
+## Emma Frost - Queen of Diamonds（クイーン・オブ・ダイヤモンド）
+
+ホワイトクイーンEmma Frostが、ダイヤモンドの女王として君臨！
+
+### スキンの特徴
+- **ホワイト＆ゴールドの衣装**: 純白とゴールドの王族風デザイン
+- **ダイヤモンドのティアラ**: 輝くクリスタルの王冠
+- **エレガントなケープ**: 優雅なマントスタイル
+
+---
+
+## 入手方法
+
+1. ゲーム内ショップにアクセス
+2. 「Featured」または「限定」セクションを確認
+3. 各スキンを個別購入
+
+---
+
+## カジノテーマコレクション
+
+このスキンは、以前登場した「Luna Snow - Disco Pop」「Thor - Boogie Bolt」に続く、限定テーマスキンシリーズの一部です。コレクションを揃えたい方は、ぜひこの機会にゲットしてください！
+
+---
+
+*スキンの入手方法や価格の詳細は、ゲーム内ショップでご確認ください。*
