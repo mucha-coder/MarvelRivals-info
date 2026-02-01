@@ -1,0 +1,130 @@
+---
+import { type Lang, useTranslations } from '../i18n/ui';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+  lang: Lang;
+  heroImage?: string;
+}
+
+const { title, description, lang, heroImage } = Astro.props;
+const t = useTranslations(lang);
+const siteTitle = t('site.title');
+const fullTitle = title === siteTitle ? title : `${title} | ${siteTitle}`;
+---
+
+<!doctype html>
+<html lang={lang} class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description || t('site.description')} />
+    <meta name="generator" content={Astro.generator} />
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description || t('site.description')} />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content={lang === 'ja' ? 'ja_JP' : 'en_US'} />
+    {heroImage && <meta property="og:image" content={heroImage} />}
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description || t('site.description')} />
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet" />
+    
+    <title>{fullTitle}</title>
+  </head>
+  <body class="min-h-screen bg-hero-gradient text-white font-body antialiased">
+    <Header lang={lang} />
+    
+    <main class="flex-1">
+      <slot />
+    </main>
+    
+    <Footer lang={lang} />
+  </body>
+</html>
+
+<style is:global>
+  /* Scrollbar styling */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: rgba(107, 33, 168, 0.5);
+    border-radius: 4px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(107, 33, 168, 0.8);
+  }
+  
+  /* Selection */
+  ::selection {
+    background: rgba(107, 33, 168, 0.5);
+    color: white;
+  }
+  
+  /* Typography prose overrides */
+  .prose {
+    --tw-prose-body: theme('colors.gray.300');
+    --tw-prose-headings: theme('colors.white');
+    --tw-prose-lead: theme('colors.gray.400');
+    --tw-prose-links: theme('colors.yellow.400');
+    --tw-prose-bold: theme('colors.white');
+    --tw-prose-counters: theme('colors.gray.400');
+    --tw-prose-bullets: theme('colors.gray.600');
+    --tw-prose-hr: theme('colors.gray.700');
+    --tw-prose-quotes: theme('colors.gray.300');
+    --tw-prose-quote-borders: theme('colors.purple.600');
+    --tw-prose-captions: theme('colors.gray.400');
+    --tw-prose-code: theme('colors.marvel-gold');
+    --tw-prose-pre-code: theme('colors.gray.300');
+    --tw-prose-pre-bg: rgba(0, 0, 0, 0.3);
+    --tw-prose-th-borders: theme('colors.gray.600');
+    --tw-prose-td-borders: theme('colors.gray.700');
+  }
+  
+  .prose a {
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  
+  .prose a:hover {
+    color: theme('colors.marvel-gold');
+  }
+  
+  .prose blockquote {
+    font-style: normal;
+    background: rgba(107, 33, 168, 0.1);
+    border-radius: 0 0.5rem 0.5rem 0;
+    padding: 1rem 1.5rem;
+  }
+  
+  .prose table {
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 0.5rem;
+    overflow: hidden;
+  }
+  
+  .prose th {
+    background: rgba(107, 33, 168, 0.2);
+  }
+</style>

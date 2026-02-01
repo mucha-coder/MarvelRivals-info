@@ -1,0 +1,116 @@
+---
+// 日本語トップページ
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PostCard from '../components/PostCard.astro';
+import { useTranslations } from '../i18n/ui';
+
+const t = useTranslations('ja');
+
+// 日本語記事を取得（新しい順）
+const posts = await getCollection('posts', ({ id }) => id.startsWith('ja/'));
+const sortedPosts = posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+// 最新の記事をフィーチャー
+const featuredPost = sortedPosts[0];
+const recentPosts = sortedPosts.slice(1, 7);
+---
+
+<BaseLayout title={t('site.title')} lang="ja">
+  <!-- Hero Section -->
+  <section class="relative overflow-hidden py-20 sm:py-32">
+    <!-- Background decoration -->
+    <div class="absolute inset-0 -z-10">
+      <div class="absolute top-1/4 left-1/4 h-96 w-96 rounded-full bg-marvel-purple/20 blur-3xl"></div>
+      <div class="absolute bottom-1/4 right-1/4 h-96 w-96 rounded-full bg-marvel-red/10 blur-3xl"></div>
+    </div>
+    
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="text-center">
+        <h1 class="text-4xl font-display font-bold tracking-tight text-white sm:text-6xl lg:text-7xl">
+          <span class="block">Marvel Rivals</span>
+          <span class="block mt-2 bg-gradient-to-r from-marvel-gold via-yellow-400 to-marvel-gold bg-clip-text text-transparent">
+            アップデート情報
+          </span>
+        </h1>
+        <p class="mx-auto mt-6 max-w-2xl text-lg text-gray-400 sm:text-xl">
+          {t('site.description')}
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Post -->
+  {featuredPost && (
+    <section class="py-12">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <h2 class="mb-8 text-2xl font-display font-bold text-white">
+          ✨ 最新記事
+        </h2>
+        <article class="group relative overflow-hidden rounded-3xl bg-gradient-to-br from-marvel-purple/30 to-marvel-dark border border-marvel-purple/30">
+          <div class="grid lg:grid-cols-2 gap-8">
+            {featuredPost.data.heroImage && (
+              <div class="aspect-video lg:aspect-auto overflow-hidden">
+                <img
+                  src={featuredPost.data.heroImage}
+                  alt=""
+                  class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+              </div>
+            )}
+            <div class="flex flex-col justify-center p-8 lg:p-12">
+              <span class="inline-flex self-start items-center rounded-full bg-marvel-gold/20 px-4 py-1.5 text-sm font-medium text-marvel-gold mb-4">
+                {t(`category.${featuredPost.data.category}` as any)}
+              </span>
+              <h3 class="text-3xl font-bold text-white mb-4 group-hover:text-marvel-gold transition-colors">
+                <a href={`/${featuredPost.slug.replace(/^ja\//, '')}`} class="after:absolute after:inset-0">
+                  {featuredPost.data.title}
+                </a>
+              </h3>
+              <p class="text-gray-400 mb-6 line-clamp-3">
+                {featuredPost.data.description}
+              </p>
+              <div class="flex items-center gap-4 text-sm text-gray-500">
+                <time datetime={featuredPost.data.pubDate.toISOString()}>
+                  {featuredPost.data.pubDate.toLocaleDateString('ja-JP')}
+                </time>
+                {featuredPost.data.heroes && (
+                  <span class="text-marvel-gold">
+                    ⚔️ {featuredPost.data.heroes.join(', ')}
+                  </span>
+                )}
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+  )}
+
+  <!-- Recent Posts Grid -->
+  {recentPosts.length > 0 && (
+    <section class="py-12">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <h2 class="mb-8 text-2xl font-display font-bold text-white">
+          📰 最近の記事
+        </h2>
+        <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {recentPosts.map((post) => (
+            <PostCard post={post} lang="ja" />
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- No posts message -->
+  {sortedPosts.length === 0 && (
+    <section class="py-20">
+      <div class="mx-auto max-w-7xl px-4 text-center">
+        <div class="text-6xl mb-4">🎮</div>
+        <h2 class="text-2xl font-bold text-white mb-2">まだ記事がありません</h2>
+        <p class="text-gray-400">最新のMarvel Rivals情報をお楽しみに！</p>
+      </div>
+    </section>
+  )}
+</BaseLayout>
