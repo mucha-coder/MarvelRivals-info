@@ -85,11 +85,15 @@ const categoryLabel = t(categoryKey);
       <!-- Related Heroes -->
       {post.data.heroes && post.data.heroes.length > 0 && (
         <div class="mt-4 flex flex-wrap gap-2">
-          {post.data.heroes.map((hero) => (
-            <span class="inline-flex items-center px-3 py-1 rounded-full text-sm bg-white/10 text-gray-300">
-              {hero}
-            </span>
-          ))}
+          {post.data.heroes.map((hero) => {
+            const heroKey = `hero.${hero}` as any;
+            const heroName = t(heroKey) || hero;
+            return (
+              <span class="inline-flex items-center px-3 py-1 rounded-full text-sm bg-white/10 text-gray-300">
+                {heroName}
+              </span>
+            );
+          })}
         </div>
       )}
       
