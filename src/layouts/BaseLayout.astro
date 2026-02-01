@@ -16,7 +16,7 @@ const siteTitle = t('site.title');
 const fullTitle = title === siteTitle ? title : `${title} | ${siteTitle}`;
 
 // サイトのベースURLを取得
-const siteUrl = Astro.site?.toString().replace(/\/$/, '') || 'https://marvel-rivals-info.pages.dev';
+const siteUrl = Astro.site?.toString().replace(/\/$/, '') || 'https://marvelrivals-info.pages.dev';
 const currentUrl = new URL(Astro.url.pathname, siteUrl).toString();
 
 // OGP画像を絶対URLに変換

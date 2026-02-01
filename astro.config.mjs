@@ -3,7 +3,7 @@ import tailwind from '@astrojs/tailwind';
 
 export default defineConfig({
     // サイトURL（デプロイ時に変更）
-    site: 'https://marvel-rivals-info.pages.dev',
+    site: 'https://marvelrivals-info.pages.dev',
 
     // i18n設定
     i18n: {
