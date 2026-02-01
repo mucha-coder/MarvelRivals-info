@@ -39,14 +39,14 @@ const fullTitle = title === siteTitle ? title : `${title} | ${siteTitle}`;
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     
-    <!-- Fonts - Clean, readable fonts -->
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet" />
     
     <title>{fullTitle}</title>
   </head>
-  <body class="min-h-screen bg-white text-gray-900 font-body antialiased">
+  <body class="min-h-screen bg-[#0d0d0d] text-white font-sans antialiased">
     <Header lang={lang} />
     
     <main class="flex-1">
@@ -58,54 +58,51 @@ const fullTitle = title === siteTitle ? title : `${title} | ${siteTitle}`;
 </html>
 
 <style is:global>
-  /* Base font settings */
   body {
     font-family: 'Inter', 'Noto Sans JP', sans-serif;
-    line-height: 1.8;
+    line-height: 1.6;
   }
   
-  /* Clean scrollbar */
   ::-webkit-scrollbar {
     width: 8px;
   }
   
   ::-webkit-scrollbar-track {
-    background: #f1f1f1;
+    background: #1a1a1a;
   }
   
   ::-webkit-scrollbar-thumb {
-    background: #c1c1c1;
+    background: #444;
     border-radius: 4px;
   }
   
   ::-webkit-scrollbar-thumb:hover {
-    background: #a1a1a1;
+    background: #555;
   }
   
-  /* Selection */
   ::selection {
-    background: rgba(59, 130, 246, 0.2);
+    background: rgba(234, 179, 8, 0.3);
     color: inherit;
   }
   
-  /* Typography prose - clean and readable */
+  /* Prose styling for articles */
   .prose {
-    --tw-prose-body: theme('colors.gray.700');
-    --tw-prose-headings: theme('colors.gray.900');
-    --tw-prose-lead: theme('colors.gray.600');
-    --tw-prose-links: theme('colors.blue.600');
-    --tw-prose-bold: theme('colors.gray.900');
-    --tw-prose-counters: theme('colors.gray.500');
-    --tw-prose-bullets: theme('colors.gray.400');
-    --tw-prose-hr: theme('colors.gray.200');
-    --tw-prose-quotes: theme('colors.gray.700');
-    --tw-prose-quote-borders: theme('colors.blue.500');
-    --tw-prose-captions: theme('colors.gray.500');
-    --tw-prose-code: theme('colors.gray.900');
-    --tw-prose-pre-code: theme('colors.gray.800');
-    --tw-prose-pre-bg: theme('colors.gray.50');
-    --tw-prose-th-borders: theme('colors.gray.300');
-    --tw-prose-td-borders: theme('colors.gray.200');
+    --tw-prose-body: #d1d5db;
+    --tw-prose-headings: #fff;
+    --tw-prose-lead: #9ca3af;
+    --tw-prose-links: #fbbf24;
+    --tw-prose-bold: #fff;
+    --tw-prose-counters: #9ca3af;
+    --tw-prose-bullets: #6b7280;
+    --tw-prose-hr: #374151;
+    --tw-prose-quotes: #e5e7eb;
+    --tw-prose-quote-borders: #fbbf24;
+    --tw-prose-captions: #9ca3af;
+    --tw-prose-code: #fff;
+    --tw-prose-pre-code: #e5e7eb;
+    --tw-prose-pre-bg: #1f2937;
+    --tw-prose-th-borders: #4b5563;
+    --tw-prose-td-borders: #374151;
   }
   
   .prose a {
@@ -114,29 +111,30 @@ const fullTitle = title === siteTitle ? title : `${title} | ${siteTitle}`;
   }
   
   .prose a:hover {
-    color: theme('colors.blue.800');
+    color: #fcd34d;
   }
   
   .prose blockquote {
     font-style: normal;
-    background: theme('colors.gray.50');
+    background: #1f2937;
     border-radius: 0 0.5rem 0.5rem 0;
     padding: 1rem 1.5rem;
-    border-left-color: theme('colors.blue.500');
-  }
-  
-  .prose table {
-    background: white;
-    border-radius: 0.5rem;
-    overflow: hidden;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-  }
-  
-  .prose th {
-    background: theme('colors.gray.50');
+    border-left-width: 4px;
+    border-left-color: #fbbf24;
   }
   
   .prose pre {
-    border: 1px solid theme('colors.gray.200');
+    background: #1f2937;
+    border: 1px solid #374151;
+  }
+  
+  .prose table {
+    background: #1a1a1a;
+    border-radius: 0.5rem;
+    overflow: hidden;
+  }
+  
+  .prose th {
+    background: #1f2937;
   }
 </style>

@@ -9,27 +9,24 @@ const { lang } = Astro.props;
 const { pathname } = Astro.url;
 
 const languageData = [
-  { code: 'ja' as const, label: 'JP' },
-  { code: 'en' as const, label: 'EN' },
+  { code: 'ja' as const, label: 'JP', flag: '🇯🇵' },
+  { code: 'en' as const, label: 'EN', flag: '🇺🇸' },
 ];
 ---
 
-<nav class="flex items-center gap-1 text-sm" aria-label="言語選択">
-  {languageData.map(({ code, label }, index) => (
-    <>
-      {index > 0 && <span class="text-gray-300">|</span>}
-      <a
-        href={getLocalizedPath(pathname, code)}
-        class:list={[
-          'px-1 transition-colors',
-          lang === code
-            ? 'text-blue-600 font-medium'
-            : 'text-gray-400 hover:text-gray-600',
-        ]}
-        aria-current={lang === code ? 'page' : undefined}
-      >
-        {label}
-      </a>
-    </>
+<nav class="flex items-center gap-1 bg-white/5 rounded-lg p-1" aria-label="言語選択">
+  {languageData.map(({ code, label }) => (
+    <a
+      href={getLocalizedPath(pathname, code)}
+      class:list={[
+        'px-3 py-1.5 rounded-md text-sm font-medium transition-all',
+        lang === code
+          ? 'bg-yellow-400 text-black'
+          : 'text-gray-400 hover:text-white hover:bg-white/10',
+      ]}
+      aria-current={lang === code ? 'page' : undefined}
+    >
+      {label}
+    </a>
   ))}
 </nav>

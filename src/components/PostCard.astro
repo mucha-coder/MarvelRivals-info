@@ -14,55 +14,62 @@ const t = useTranslations(lang);
 const slug = post.slug.replace(/^(ja|en)\//, '');
 const href = lang === 'ja' ? `/${slug}` : `/en/${slug}`;
 
-// カテゴリの表示名を取得
+// カテゴリの表示名と色を取得
+const categoryColors: Record<string, string> = {
+  'patch-notes': 'bg-yellow-400 text-black',
+  'hero-balance': 'bg-purple-500 text-white',
+  'events': 'bg-blue-500 text-white',
+  'guides': 'bg-green-500 text-white',
+};
+
+const categoryColor = categoryColors[post.data.category] || 'bg-gray-500 text-white';
 const categoryKey = `category.${post.data.category}` as keyof ReturnType<typeof useTranslations>;
 const categoryLabel = t(categoryKey);
 
 // 日付フォーマット
 const dateFormatter = new Intl.DateTimeFormat(lang === 'ja' ? 'ja-JP' : 'en-US', {
   year: 'numeric',
-  month: 'short',
+  month: 'long',
   day: 'numeric',
 });
+
+// デフォルト画像（heroImageがない場合）
+const defaultImage = '/images/default-thumbnail.jpg';
+const thumbnailImage = post.data.heroImage || defaultImage;
 ---
 
-<article class="py-4 border-b border-gray-100 last:border-b-0">
-  <div class="flex items-start justify-between gap-4">
-    <div class="flex-1 min-w-0">
-      <!-- Category & Date -->
-      <div class="flex items-center gap-3 text-sm text-gray-500 mb-1">
-        <span class="text-blue-600 font-medium">{categoryLabel}</span>
-        <span>•</span>
+<article class="group">
+  <a href={href} class="block">
+    <!-- Thumbnail -->
+    <div class="relative aspect-video overflow-hidden rounded-xl bg-gray-800">
+      <img
+        src={thumbnailImage}
+        alt=""
+        class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+        loading="lazy"
+      />
+      <!-- Gradient overlay -->
+      <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+    </div>
+    
+    <!-- Content -->
+    <div class="mt-4">
+      <!-- Category Badge -->
+      <span class:list={['inline-block px-3 py-1 rounded text-xs font-bold uppercase tracking-wide', categoryColor]}>
+        {categoryLabel}
+      </span>
+      
+      <!-- Title -->
+      <h3 class="mt-2 text-lg font-bold text-white group-hover:text-yellow-400 transition-colors line-clamp-2">
+        {post.data.title}
+      </h3>
+      
+      <!-- Meta -->
+      <div class="mt-2 flex items-center gap-3 text-sm text-gray-400">
         <time datetime={post.data.pubDate.toISOString()}>
           {dateFormatter.format(post.data.pubDate)}
         </time>
       </div>
-
-      <!-- Title -->
-      <h3 class="text-lg font-medium text-gray-900 hover:text-blue-600 transition-colors">
-        <a href={href} class="hover:underline">
-          {post.data.title}
-        </a>
-      </h3>
-
-      <!-- Description -->
-      <p class="mt-1 text-sm text-gray-600 line-clamp-2">
-        {post.data.description}
-      </p>
-
-      <!-- Related Heroes -->
-      {post.data.heroes && post.data.heroes.length > 0 && (
-        <div class="mt-2 flex flex-wrap gap-1">
-          {post.data.heroes.slice(0, 3).map((hero) => (
-            <span class="inline-flex items-center px-2 py-0.5 rounded text-xs bg-gray-100 text-gray-600">
-              {hero}
-            </span>
-          ))}
-          {post.data.heroes.length > 3 && (
-            <span class="text-xs text-gray-400">+{post.data.heroes.length - 3}</span>
-          )}
-        </div>
-      )}
     </div>
-  </div>
+  </a>
 </article>
