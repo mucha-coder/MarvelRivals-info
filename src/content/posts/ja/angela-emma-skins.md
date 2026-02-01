@@ -1,6 +1,6 @@
 ---
-title: "Angela「エース・オブ・スペード」& Emma Frost「クイーン・オブ・ダイヤモンド」スキン登場"
-description: "Marvel Rivalsに新しいカジノテーマスキンが登場！AngelaのAce of SpadesスキンとEmma FrostのQueen of Diamondsスキンの詳細をお届けします。"
+title: "アンジェラ「エース・オブ・スペード」& エマ・フロスト「クイーン・オブ・ダイヤモンド」スキン登場"
+description: "Marvel Rivalsに新しいカジノテーマスキンが登場！アンジェラのAce of Spadesスキンとエマ・フロストのQueen of Diamondsスキンの詳細をお届けします。"
 pubDate: 2026-01-27
 heroImage: "/images/angela-emma-skins.png"
 category: "events"
@@ -10,7 +10,7 @@ lang: "ja"
 
 ## 新スキン「Ace of Spades」&「Queen of Diamonds」が登場！
 
-Marvel Rivalsに、AngelaとEmma Frostのカジノをテーマにした華麗な新スキンが登場しました。カードゲームをモチーフにしたエレガントなデザインで、バトルフィールドを彩ります。
+Marvel Rivalsに、アンジェラとエマ・フロストのカジノをテーマにした華麗な新スキンが登場しました。カードゲームをモチーフにしたエレガントなデザインで、バトルフィールドを彩ります。
 
 ## 入手開始日
 
