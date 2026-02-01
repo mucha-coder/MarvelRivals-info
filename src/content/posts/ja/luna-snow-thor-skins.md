@@ -1,6 +1,6 @@
 ---
-title: "Luna Snow「ディスコポップ」& Thor「ブギーボルト」スキン登場"
-description: "Marvel Rivalsに新しい限定スキンが登場！Luna SnowのDisco PopスキンとThorのBoogie Boltスキンの入手方法と期間を解説します。"
+title: "ルナ・スノー「ディスコポップ」& ソー「ブギーボルト」スキン登場"
+description: "Marvel Rivalsに新しい限定スキンが登場！ルナ・スノーのDisco PopスキンとソーのBoogie Boltスキンの入手方法と期間を解説します。"
 pubDate: 2026-01-23
 heroImage: "/images/luna-snow-thor-skins.jpg"
 category: "events"
@@ -10,7 +10,7 @@ lang: "ja"
 
 ## 新スキン「Disco Pop」&「Boogie Bolt」が期間限定で登場！
 
-Marvel Rivalsに、Luna SnowとThorの華やかな新スキンが登場しました。ディスコをテーマにしたこれらのスキンは、期間限定でゲーム内ショップにて入手可能です。
+Marvel Rivalsに、ルナ・スノーとソーの華やかな新スキンが登場しました。ディスコをテーマにしたこれらのスキンは、期間限定でゲーム内ショップにて入手可能です。
 
 ## 入手期間
 
@@ -20,11 +20,11 @@ Marvel Rivalsに、Luna SnowとThorの華やかな新スキンが登場しまし
 
 ---
 
-## Luna Snow - Disco Pop（ディスコポップ）
+## ルナ・スノー - Disco Pop（ディスコポップ）
 
 ![Luna Snow Disco Pop](/images/luna-snow-thor-skins.jpg)
 
-K-POPアイドルのLuna Snowが、キラキラのディスコスタイルに変身！
+K-POPアイドルのルナ・スノーが、キラキラのディスコスタイルに変身！
 
 ### スキンの特徴
 - **ミラーボール風の衣装**: シルバーとピンクのグリッターデザイン
@@ -33,9 +33,9 @@ K-POPアイドルのLuna Snowが、キラキラのディスコスタイルに変
 
 ---
 
-## Thor - Boogie Bolt（ブギーボルト）
+## ソー - Boogie Bolt（ブギーボルト）
 
-雷神Thorがファンキーなディスコスタイルで登場！
+雷神ソーがファンキーなディスコスタイルで登場！
 
 ### スキンの特徴
 - **サングラス**: 紫のグラデーションサングラス
@@ -57,6 +57,6 @@ K-POPアイドルのLuna Snowが、キラキラのディスコスタイルに変
 
 ## まとめ
 
-Luna SnowとThorのディスコテーマスキンは、期間限定のレアアイテムです。バトルフィールドで目立ちたい方は、ぜひこの機会にゲットしてください！
+ルナ・スノーとソーのディスコテーマスキンは、期間限定のレアアイテムです。バトルフィールドで目立ちたい方は、ぜひこの機会にゲットしてください！
 
 **入手期間**: 2026年1月23日 ～ 2月20日
