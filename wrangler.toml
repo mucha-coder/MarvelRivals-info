@@ -1,5 +1,9 @@
+# Cloudflare Pages configuration
 name = "marvelrivals-info"
 compatibility_date = "2026-02-01"
 
-[assets]
-directory = "./dist"
+# Pages specific settings
+pages_build_output_dir = "./dist"
+
+[build]
+command = "npm run build"
