@@ -43,6 +43,16 @@ const categoryColors: Record<string, string> = {
 const categoryColor = categoryColors[post.data.category] || 'bg-gray-500 text-white';
 const categoryKey = `category.${post.data.category}` as keyof ReturnType<typeof useTranslations>;
 const categoryLabel = t(categoryKey);
+
+// Get related articles
+const enPosts = allPosts.filter((p) => p.id.startsWith('en/') && p.slug !== post.slug);
+const relatedPosts = post.data.category === 'patch-notes'
+  ? enPosts.filter((p) => p.data.category === 'patch-notes')
+      .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+      .slice(0, 4)
+  : enPosts
+      .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+      .slice(0, 4);
 ---
 
 <BaseLayout 
@@ -126,8 +136,42 @@ const categoryLabel = t(categoryKey);
       <Content />
     </div>
     
+    <!-- More Articles -->
+    {relatedPosts.length > 0 && (
+      <section class="mt-12 pt-8 border-t border-white/10">
+        <h2 class="text-xl font-bold text-white mb-6">
+          {post.data.category === 'patch-notes' ? 'More Patch Notes' : 'More Articles'}
+        </h2>
+        <div class="grid gap-4 sm:grid-cols-2">
+          {relatedPosts.map((related) => {
+            const relatedSlug = related.slug.replace(/^en\//, '');
+            const relatedCategoryColor = categoryColors[related.data.category] || 'bg-gray-500 text-white';
+            const relatedCategoryKey = `category.${related.data.category}` as any;
+            return (
+              <a href={`/en/${relatedSlug}`} class="group block bg-white/5 rounded-xl overflow-hidden border border-white/10 hover:border-yellow-400/50 transition-all">
+                {related.data.heroImage && (
+                  <img src={related.data.heroImage} alt="" class="w-full h-32 object-cover" />
+                )}
+                <div class="p-4">
+                  <span class:list={['inline-block px-2 py-0.5 rounded text-xs font-bold uppercase mb-2', relatedCategoryColor]}>
+                    {t(relatedCategoryKey)}
+                  </span>
+                  <h3 class="text-sm font-bold text-white group-hover:text-yellow-400 transition-colors line-clamp-2">
+                    {related.data.title}
+                  </h3>
+                  <time class="text-xs text-gray-500 mt-1 block" datetime={related.data.pubDate.toISOString()}>
+                    {dateFormatter.format(related.data.pubDate)}
+                  </time>
+                </div>
+              </a>
+            );
+          })}
+        </div>
+      </section>
+    )}
+
     <!-- Back to Home -->
-    <footer class="mt-12 pt-8 border-t border-white/10">
+    <footer class="mt-8 pt-8 border-t border-white/10">
       <a
         href="/en"
         class="inline-flex items-center text-sm text-gray-400 hover:text-yellow-400 transition-colors"
